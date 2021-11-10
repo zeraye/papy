@@ -2,10 +2,6 @@
 
 Pseudo assembly interpreter made in Python.
 
-## Requirements
-
-Python 3.6+ is required.
-
 ## Usage
 
 ```
@@ -124,6 +120,10 @@ $ python3 papy.py examples/euclidean_algorithm.papy
 $ python3 papy.py examples/sum_positive_elements.papy
 2420
 ```
+
+## Requirements
+
+Python 3.6+ is required.
 
 ## Author
 
