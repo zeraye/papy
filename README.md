@@ -4,7 +4,7 @@ Pseudo assembly interpreter made in Python3.
 
 ## Important
 
-- Neger use register 0, it is reserved for `C` and `CR` (comparision operators)
+- Never use register 0, it is reserved for `C` and `CR` (comparision operators)
 - Arrays are generated with random numbers from -99 to 99 (including both), unless you change it (TODO)
 - To refer to N-th position in the array use `ARR_NAME(N*4)`
 - At the very beginning registers have some trash values in them (TODO)
