@@ -1,109 +1,39 @@
 # Papy
 
-Pseudo assembly interpreter made in Python.
+Pseudo assembly interpreter made in Python3.
 
-## Usage
+## Important
 
-```
-!!!IMPORTANT!!!
-NEVER USE REGISTER 0, IT'S RESERVED FOR COMPARISION
-ARRAY IS GENERATED WITH RANDOM NUMBERS FROM -99 TO -99 (INCLUDING BOTH)
-TO REFER TO N-POSITION IN THE ARRAY USE ARRAY_NAME(N*4)
-CLEAR REGISTER BEFORE USING IT
+- Neger use register 0, it is reserved for `C` and `CR` (comparision operators)
+- Arrays are generated with random numbers from -99 to 99 (including both), unless you change it (TODO)
+- To refer to N-th position in the array use `ARR_NAME(N*4)`
+- At the very beginning registers have some trash values in them (TODO)
 
-Scheme
-<short description>
-<command>
-<example>
-
-Definition
-NAME    DC    INTEGER(SOME_NUMBER)
-ONE     DC    INTEGER(1)
-
-Declaring numbers
-NAME    DS    INTEGER
-ANSWER  DS    INTEGER
-
-Declaring arrays
-NAME    DS    LENGTH*INTEGER
-TABLE   DS    100*INTEGER
-
-Loading from memory to register
-LABEL   L     REG,MEM
-        L     1,ONE
-
-Loading from register to register
-LABEL   LR    REG1,REG2
-        LR    1,2
-  
-Loading from register to memory
-LABEL   ST    REG,MEM
-        LR    1,ANSWER
-
-Adding memory to register
-LABEL   A     REG,MEM
-        A     1,ONE
-
-Subtracting register by memory
-LABEL   S     REG,MEM
-        S     1,ONE
-
-Multiplying register by memory
-LABEL   M     REG,MEM
-        M     1,FOUR
-
-Dividing register by memory
-LABEL   D     REG,MEM
-        D     1,FOUR
-
-Adding register to register
-LABEL   AR    REG1,REG2
-        AR    1,2
-
-Subtracting register by register
-LABEL   SR    REG1,REG2
-        SR    1,2
-
-Multiplying register by register
-LABEL   MR    REG1,REG2
-        MR    1,2
-
-Dividing register by register
-LABEL   DR    REG1,REG2
-        DR    1,2
-
-Comparing (subtracting) register by memory
-LABEL   C     REG,MEM
-        C     1,ONE
-
-Comparing (subtracting) register by register
-LABEL   CR    REG1,REG2
-        CR    1,2
-
-Unconditional jump
-LABEL   J     LABEL_TO_JUMP
-        J     END
-
-Jump if last comparision was zero
-LABEL   JZ    LABEL_TO_JUMP
-        JZ    END
-
-Jump if last comparision was negative
-LABEL   JN    LABEL_TO_JUMP
-        JN    END
-
-Jump if last comparision was positive
-LABEL   JP    LABEL_TO_JUMP
-        JP    END
-
-Print memory
-LABEL   P     MEM
-        P     ANSWER
-
-Print register
-LABEL   PR    REG
-        PR    1
-```
+## Operations
+Label | Operator | Value(s) | Description
+--- | --- | --- | ---
+`VAR_NAME` | `DC` | `INTEGER(SOME_NUMBER)` | declare `INTEGER` and assign `SOME_NUMBER`
+`VAR_NAME` | `DS` | `INTEGER` | declare `INTEGER`
+`ARR_NAME` | `DS` | `LENGTH*INTEGER` | declare array of `INTEGER`'s with length of  `LENGTH`
+`LABEL_NAME` | `L` | `REG, MEM` | load value from `MEM` to `REG`
+`LABEL_NAME` | `LR` | `REG1, REG2` | load `REG2` to `REG1`
+`LABEL_NAME` | `ST` | `REG, MEM` | load `MEM` address to `REG`
+`LABEL_NAME` | `A` | `REG, MEM` | add value from `MEM` to `REG`
+`LABEL_NAME` | `S` | `REG, MEM` | subtract value from `MEM` from `REG`
+`LABEL_NAME` | `M` | `REG, MEM` | multiply `REG` by value from `MEM`
+`LABEL_NAME` | `D` | `REG, MEM` | divide `REG` by value from `MEM`
+`LABEL_NAME` | `AR` | `REG1, REG2` | add `REG2` to `REG1`
+`LABEL_NAME` | `SR` | `REG1, REG2` | subtract `REG2` from `REG1`
+`LABEL_NAME` | `MR` | `REG1, REG2` | multiply `REG1` by `REG2`
+`LABEL_NAME` | `DR` | `REG1, REG2` | divide `REG1` by `REG2`
+`LABEL_NAME` | `C` | `REG, MEM` | compare `REG` with value from `MEM` (subtract value from `MEM` from `REG` and write to register 0)
+`LABEL_NAME` | `CR` | `REG1, REG2` | compare `REG1` with `REG2` (subtract `REG2` from `REG1` and write to register 0)
+`LABEL_NAME` | `J` | `LABEL_TO_JUMP` | unconditionally jump to `LABEL_TO_JUMP`
+`LABEL_NAME` | `JP` | `LABEL_TO_JUMP` | if register 0 is positive jump to `LABEL_TO_JUMP`
+`LABEL_NAME` | `JZ` | `LABEL_TO_JUMP` | if register 0 is zero jump to `LABEL_TO_JUMP`
+`LABEL_NAME` | `JN` | `LABEL_TO_JUMP` | if register 0 is negative jump to `LABEL_TO_JUMP`
+`LABEL_NAME` | `P` | `MEM` | write value from `MEM` to terminal
+`LABEL_NAME` | `PR` | `REG` | write `REG` to terminal
 
 ## Running
 
@@ -116,14 +46,23 @@ $ python3 papy.py filename.papy
 ```sh
 $ python3 papy.py examples/euclidean_algorithm.papy
 7
+```
 
+```sh
 $ python3 papy.py examples/sum_positive_elements.papy
 2420
 ```
 
 ## Requirements
 
-Python 3.6+ is required.
+[Python 3.6+](https://www.python.org) is required.
+
+## Roadmap
+
+- [ ] Error handling
+- [ ] Preprocessor directive
+- [ ] Debugging tools
+- [ ] Trash values in registers at the very beginning
 
 ## Author
 
