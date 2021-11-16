@@ -1,3 +1,5 @@
+<img src="papaj.png" alt="" width="150"/>
+
 # Papy
 
 Pseudo assembly interpreter made in Python3.
