@@ -2,6 +2,73 @@
 
 Pseudo assembly interpreter made in Python3.
 
+## Quick Start
+
+# Running
+
+```sh
+$ python3 papy.py filename.papy
+```
+
+# Examples
+
+(see examples)[examples/]
+
+```txt
+M     DC  INTEGER(91)
+N     DC  INTEGER(63)
+NWD   DS  INTEGER
+      L   1, M
+      L   2, N
+START CR  1, 2
+      JZ  END
+      JN  NEG
+      SR  1, 2
+      J   START
+NEG   SR  2, 1
+      J   START
+END   ST  1, NWD
+      P   NWD
+```
+
+```sh
+$ python3 papy.py examples/euclidean_algorithm.papy
+7
+```
+
+```txt
+ONE     DC  INTEGER(1)
+FOUR    DC  INTEGER(4)
+HUNDRED DC  INTEGER(100)
+VECTOR  DS  100*INTEGER
+SUM     DS  INTEGER
+        SR  1, 1
+				SR  2, 2
+				SR  3, 3
+				SR  4, 4
+START   C   1, VECTOR(2)
+        JZ  NEG
+				JP  NEG
+				A   4, VECTOR(2)
+NEG     A   2, FOUR
+        A   3, ONE
+				C   3, HUNDRED
+				JZ  END
+				J   START
+END     ST  4, SUM
+        P   SUM
+```
+
+```sh
+$ python3 papy.py examples/sum_positive_elements.papy
+2420
+```
+
+# Requirements
+
+[Python 3.6+](https://www.python.org) is required.
+
+
 ## Important
 
 - Never use register 0, it is reserved for `C` and `CR` (comparision operators)
@@ -34,28 +101,6 @@ Label | Operator | Value(s) | Description
 `LABEL_NAME` | `JN` | `LABEL_TO_JUMP` | if register 0 is negative jump to `LABEL_TO_JUMP`
 `LABEL_NAME` | `P` | `MEM` | write value from `MEM` to terminal
 `LABEL_NAME` | `PR` | `REG` | write `REG` to terminal
-
-## Running
-
-```sh
-$ python3 papy.py filename.papy
-```
-
-## Examples
-
-```sh
-$ python3 papy.py examples/euclidean_algorithm.papy
-7
-```
-
-```sh
-$ python3 papy.py examples/sum_positive_elements.papy
-2420
-```
-
-## Requirements
-
-[Python 3.6+](https://www.python.org) is required.
 
 ## Roadmap
 
