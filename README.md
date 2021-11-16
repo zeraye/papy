@@ -12,7 +12,7 @@ $ python3 papy.py filename.papy
 
 # Examples
 
-(see examples)[examples/]
+[see examples](examples/)
 
 ```txt
 M     DC  INTEGER(91)
@@ -43,18 +43,18 @@ HUNDRED DC  INTEGER(100)
 VECTOR  DS  100*INTEGER
 SUM     DS  INTEGER
         SR  1, 1
-				SR  2, 2
-				SR  3, 3
-				SR  4, 4
+        SR  2, 2
+        SR  3, 3
+        SR  4, 4
 START   C   1, VECTOR(2)
         JZ  NEG
-				JP  NEG
-				A   4, VECTOR(2)
+        JP  NEG
+        A   4, VECTOR(2)
 NEG     A   2, FOUR
         A   3, ONE
-				C   3, HUNDRED
-				JZ  END
-				J   START
+        C   3, HUNDRED
+        JZ  END
+        J   START
 END     ST  4, SUM
         P   SUM
 ```
