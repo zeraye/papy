@@ -4,13 +4,13 @@ Pseudo assembly interpreter made in Python3.
 
 ## Quick Start
 
-# Running
+### Running
 
 ```sh
 $ python3 papy.py filename.papy
 ```
 
-# Examples
+### Examples
 
 [see examples](examples/)
 
@@ -64,7 +64,7 @@ $ python3 papy.py examples/sum_positive_elements.papy
 2420
 ```
 
-# Requirements
+### Requirements
 
 [Python 3.6+](https://www.python.org) is required.
 
