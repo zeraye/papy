@@ -103,8 +103,8 @@ Label | Operator | Value(s) | Description
 `LABEL_NAME` | `JN` | `LABEL_TO_JUMP` | if register 0 is negative jump to `LABEL_TO_JUMP`
 `LABEL_NAME` | `P` | `MEM` | write value from `MEM` to terminal
 `LABEL_NAME` | `PR` | `REG` | write `REG` to terminal
- | `?M` | | debug tool for writing memory
- | `?R` | | debug tool for writing registers
+&nbsp; | `?M` | &nbsp; | debug tool for writing memory
+&nbsp; | `?R` | &nbsp; | debug tool for writing registers
 
 ## Roadmap
 
