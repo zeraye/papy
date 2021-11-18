@@ -21,9 +21,9 @@ BB    L    2,ONE
       JZ   D_ZER
       JN   D_NEG
 D_POS L    4,TWO
-			J    END
+      J    END
 D_ZER L    4,ONE
-		  J    END
+      J    END
 D_NEG L    4,ZERO
       J    END
 END   ST   4,ANS
