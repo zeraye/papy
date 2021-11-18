@@ -10,23 +10,21 @@ code = {}
 i = 0
 
 for arg in source:
-    j = 0
-    code[i] = []
     row = arg.split()
 
-    if len(row) == 2:
-        code[i].append("")
+    if len(row) == 1:
+        code[i] = ["", row[0], ""]
+    elif len(row) == 2:
+        code[i] = ["", row[0], row[1]]
+    elif len(row) == 3:
+        code[i] = [row[0], row[1], row[2]]
     else:
-        code[i].append(row[j])
-        j += 1
-
-    code[i].append(row[j])
-    code[i].append(row[j+1])
+        continue
 
     i += 1
 
 memory = {}
-registers = {str(i):0 for i in range(16)}
+registers = {str(i):random.randint(-2**31, 2**31-1) for i in range(16)}
 
 def num_from_val(value):
     return int("".join(re.findall("[\d]", value)))
@@ -156,5 +154,18 @@ while n < len(code):
     elif line[1] == "PR":
         reg = line[2]
         print(registers[reg])
+    elif line[1] == "?M":
+        print("[DEBUG] -------------------")
+        print(f"[DEBUG] MEMORY")
+        for mem in memory:
+            print(f"[DEBUG] {mem}\t{memory[mem]}")
+        print("[DEBUG] -------------------")
+
+    elif line[1] == "?R":
+        print("[DEBUG] -------------------")
+        print(f"[DEBUG] REGISTERS")
+        for reg in registers:
+            print(f"[DEBUG] {reg}\t{registers[reg]}")
+        print("[DEBUG] -------------------")
 
     n += 1

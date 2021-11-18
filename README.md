@@ -74,9 +74,9 @@ $ python3 papy.py examples/sum_positive_elements.papy
 ## Important
 
 - Never use register 0, it is reserved for `C` and `CR` (comparision operators)
-- Arrays are generated with random numbers from -99 to 99 (including both), unless you change it (TODO)
+- Arrays are generated with random numbers from `-99` to `99` (including both), unless you change it (TODO)
 - To refer to N-th position in the array use `ARR_NAME(N*4)`
-- At the very beginning registers have some trash values in them (TODO)
+- At the very beginning registers have some trash values in them from `-2^31` to `2^31-1`
 
 ## Operations
 Label | Operator | Value(s) | Description
@@ -103,13 +103,16 @@ Label | Operator | Value(s) | Description
 `LABEL_NAME` | `JN` | `LABEL_TO_JUMP` | if register 0 is negative jump to `LABEL_TO_JUMP`
 `LABEL_NAME` | `P` | `MEM` | write value from `MEM` to terminal
 `LABEL_NAME` | `PR` | `REG` | write `REG` to terminal
+ | `?M` | | debug tool for writing memory
+ | `?R` | | debug tool for writing registers
 
 ## Roadmap
 
 - [ ] Error handling
 - [ ] Preprocessor directive
-- [ ] Debugging tools
-- [ ] Trash values in registers at the very beginning
+- [x] Debugging tools
+- [x] Trash values in registers at the very beginning
+- [ ] Unit testing
 
 ## Author
 
