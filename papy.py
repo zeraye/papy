@@ -2,10 +2,19 @@ import sys
 import re
 import random
 
+def num_from_val(value):
+    return int("".join(re.findall("[\d]", value)))
+
+def addr_from_val(value):
+    return "".join(re.findall("[A-Z]", value))
+
+
 with open(sys.argv[1], "r") as file:
     source = file.readlines()
 
 code = {}
+
+generated_array_range = (-99, 99)
 
 i = 0
 
@@ -17,6 +26,10 @@ for arg in source:
     elif len(row) == 2:
         code[i] = ["", row[0], row[1]]
     elif len(row) == 3:
+        if row[0] == "DEFINE":
+            if row[1] == "?A":
+                generated_array_range = tuple(map(int, row[2].split(",")))
+            continue
         code[i] = [row[0], row[1], row[2]]
     else:
         continue
@@ -26,24 +39,18 @@ for arg in source:
 memory = {}
 registers = {str(i):random.randint(-2**31, 2**31-1) for i in range(16)}
 
-def num_from_val(value):
-    return int("".join(re.findall("[\d]", value)))
-
-def addr_from_val(value):
-    return "".join(re.findall("[A-Z]", value))
-
 n = 0
 
 while n < len(code):
     line = code[n]
-    
+
     if line[1] == "DC":
         memory[line[0]] = num_from_val(line[2])
     elif line[1] == "DS":
         if line[2] == "INTEGER":
-            memory[line[0]] = 0
+            memory[line[0]] = random.randint(-2**31, 2**31-1)
         else:
-            memory[line[0]] = [random.randint(-99, 99) for i in range(num_from_val(line[2]))]
+            memory[line[0]] = [random.randint(*generated_array_range) for i in range(num_from_val(line[2]))]
     elif line[1] == "L":
         reg, mem = line[2].split(",")
         registers[reg] = memory[mem]
@@ -167,5 +174,7 @@ while n < len(code):
         for reg in registers:
             print(f"[DEBUG] {reg}\t{registers[reg]}")
         print("[DEBUG] -------------------")
+    elif line[0] == "DEFINE":
+        pass
 
     n += 1

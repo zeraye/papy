@@ -1,4 +1,0 @@
-ONE		DC		INTEGER(1)
-			L			1, ONE
-			?M
-			?R
