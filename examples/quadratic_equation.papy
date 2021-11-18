@@ -14,12 +14,12 @@ BB    L    2,ONE
       M    3,A
       M    3,C
       M    2,FOUR
-			LR   1,2
-			SR   1,3
-			C    1,ZERO
-			JP   D_POS
-			JZ   D_ZER
-			JN   D_NEG
+      LR   1,2
+      SR   1,3
+      C    1,ZERO
+      JP   D_POS
+      JZ   D_ZER
+      JN   D_NEG
 D_POS L    4,TWO
 			J    END
 D_ZER L    4,ONE
