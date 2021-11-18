@@ -3,7 +3,7 @@ import re
 import random
 
 def num_from_val(value):
-    return int("".join(re.findall("[\d]", value)))
+    return int("".join(re.findall("[-\d]", value)))
 
 def addr_from_val(value):
     return "".join(re.findall("[A-Z]", value))

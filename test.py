@@ -1,7 +1,7 @@
-import random
-b="1,2"
-a=tuple(map(int,b.split(",")))
-r=random.randint(*a)
-l=[random.randint(*a) for i in range(10)]
-print(r)
-print(l)
+import re
+def num_from_val(value):
+    return int("".join(re.findall("[-\d]", value)))
+
+print(type(num_from_val("INTEGER(-35)")))
+print(num_from_val("35"))
+print(num_from_val("3a5"))
