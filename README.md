@@ -117,7 +117,7 @@ Label | Operator | Value(s) | Description
 - [x] Preprocessor directive
 - [x] Debugging tools
 - [x] Trash values in registers at the very beginning
-- [ ] Unit testing
+- [x] Unit testing
 
 ## Author
 

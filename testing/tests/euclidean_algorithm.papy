@@ -1,0 +1,14 @@
+M     DC    INTEGER(91)
+N     DC    INTEGER(63)
+NWD   DS    INTEGER
+      L     1,M
+      L     2,N
+START CR    1,2
+      JZ    END
+      JN    NEG
+      SR    1,2
+      J     START
+NEG   SR    2,1
+      J     START
+END   ST    1,NWD
+      P     NWD
