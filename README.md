@@ -118,7 +118,3 @@ Label | Operator | Value(s) | Description
 - [x] Debugging tools
 - [x] Trash values in registers at the very beginning
 - [x] Unit testing
-
-## Author
-
-The author of this repository is [Jakub Rudnik](https://github.com/Zeraye).
